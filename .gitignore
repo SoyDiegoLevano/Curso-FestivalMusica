@@ -3,6 +3,3 @@ node_modules/
 
 # json
 *.json
-
-#gulp
-gulpfile.js

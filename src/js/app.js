@@ -24,9 +24,12 @@ function crearGaleria() {
 
     //sin let "i" pasa como 17 a mostrar imagen
     for (let i = 1; i <= CANTIDAD_IMAGENES; i++) {
-        const imagen = document.createElement('IMG');
-        imagen.src = `src/img/gallery/full/${i}.jpg`
-        imagen.alt = `Imagen Galería ${i}`
+        const imagen = document.createElement('PICTURE');
+        imagen.innerHTML = `
+            <source srcset="build/img/gallery/thumb/${i}.avif" type="image/avif">
+            <source srcset="build/img/gallery/thumb/${i}.webp" type="image/webp">
+            <img loading="lazy" width="200" height="300" src="build/img/gallery/thumb/${i}.jpg" alt="imagen galeria">
+        `;
 
         //event Handler
         //Utilizar function para que no se ejecute inmediatamente y pasar parametro, si no se necesita solo poner nombre de la funcion sin parentesis
@@ -40,9 +43,12 @@ function crearGaleria() {
 
 function mostrarImagen(i) {
     //crear imagen
-    const imagen = document.createElement('IMG');
-    imagen.src = `src/img/gallery/full/${i}.jpg`
-    imagen.alt = `Imagen Galería ${i}`
+    const imagen = document.createElement('PICTURE');
+    imagen.innerHTML = `
+        <source srcset="build/img/gallery/full/${i}.avif" type="image/avif">
+        <source srcset="build/img/gallery/full/${i}.webp" type="image/webp">
+        <img loading="lazy" width="200" height="300" src="build/img/gallery/thumb/${i}.jpg" alt="imagen galeria">
+    `;
 
     //Crear Modal
     const modal = document.createElement('DIV');
